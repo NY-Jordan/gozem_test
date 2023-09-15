@@ -1,7 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+body {
+  padding: 00px;
+  margin: 00px;
+  overflow-x: hidden;
+}
 
 input[type="radio"]:checked {
   background-color: green

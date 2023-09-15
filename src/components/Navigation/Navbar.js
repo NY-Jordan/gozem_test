@@ -1,31 +1,32 @@
-import React, { useState } from 'react'
-import logo from './../assets/images/logo.png'
+import React, { useEffect, useState } from 'react'
+import logo from './../../assets/images/logo.png'
 
-import dashboard_image from './../assets/images/m-trackIconBG [active].png'
-import railroad from './../assets/images/railroad.png'
-import conversation from './../assets/images/conversation-chat-1.png'
-import contribute from './../assets/images/toys-lego.png'
-import language1 from './../assets/images/m-languageIcon [exercism].png'
-import groupIcon from './../assets/images/icon/mood-happy.png'
-import redIcon from './../assets/images/icon/a-icon [red-dot].png'
-import redIcon2 from './../assets/images/icon/Frame 160.png'
-import BageIndicator from './../assets/images/icon/a-icon [badge-indicator] [common].png'
-import NotifIcon from './../assets/images/icon/alarm-bell.png'
-import BadgeIcon from './../assets/images/icon/badge-1.png'
-import ProfileIcon from './../assets/images/icon/m-profileBit.png'
-import verticalMenu from './../assets/images/icon/navigation-menu-vertical.png'
+import dashboard_image from './../../assets/images/m-trackIconBG [active].png'
+import railroad from './../../assets/images/railroad.png'
+import conversation from './../../assets/images/conversation-chat-1.png'
+import contribute from './../../assets/images/toys-lego.png'
+import language1 from './../../assets/images/m-languageIcon [exercism].png'
+import groupIcon from './../../assets/images/icon/mood-happy.png'
+import redIcon from './../../assets/images/icon/a-icon [red-dot].png'
+import redIcon2 from './../../assets/images/icon/Frame 160.png'
+import BageIndicator from './../../assets/images/icon/a-icon [badge-indicator] [common].png'
+import NotifIcon from './../../assets/images/icon/alarm-bell.png'
+import BadgeIcon from './../../assets/images/icon/badge-1.png'
+import ProfileIcon from './../../assets/images/icon/m-profileBit.png'
+import verticalMenu from './../../assets/images/icon/navigation-menu-vertical.png'
 
 import NavItem from './NavItem'
 import Dropdown from './Dropdown'
 import DropdownItem from './DropdownItem'
 
-export default function Navbar() {
-    
+export default function Navbar({languages}) {
+
   const [MessageState, setMessageState] = useState('group_active') // active with setMessageState('group_active')
   const [BadgeState, setBadgeState] = useState('group_active') // active with setMessageState('group_active')
   const [Badge_oneState, setBadge_oneState] = useState('badge1_active') // active with setMessageState('group_active')
+  
   return (
-    <nav className="navbar bg-base-100 shadow pl-10 pr-0 py-0 flex items-center w-1000">
+    <nav className="navbar bg-base-100  shadow pl-10 pr-0 py-0 flex items-center ">
         
         <a href='#'  >
             <img src={logo} />
@@ -34,8 +35,9 @@ export default function Navbar() {
             <ul className="menu menu-horizontal px-1 py-0  w-full ">
                 <NavItem icon={dashboard_image}  title={"Dashboard"}/>
                 <Dropdown  icon={railroad} title={"Language"} >
-                    <DropdownItem icon={language1}  title={"React"}/>
-                    <DropdownItem  icon={language1}  title={"Angular"} />
+                    {languages && languages.map((language, key) => 
+                        <DropdownItem icon={language.icon_url}  title={language.title}/> 
+                    )  }
                 </Dropdown>
                 <NavItem icon={conversation}  title={"Mentoring"}/>
                 <NavItem icon={contribute}  title={"Contribute"}/>
