@@ -31,3 +31,9 @@ input[type="radio"]:checked {
   top: -48px;
   left: 94px;
 }
+
+.spin-loader-position {
+  position: absolute;
+  top: 350px;
+  left: 630px;
+}

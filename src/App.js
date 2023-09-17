@@ -1,28 +1,34 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useMemo } from 'react'
 import Navbar from "./components/Navigation/Navbar";
 import Header from './components/Header';
 import Table from './components/Table/Table';
-import { useDispatch, useSelector } from 'react-redux';
+import { createStoreHook, useDispatch, useSelector } from 'react-redux';
 import { getLanguagesService } from './redux/service/languagesService';
-import { getTestimonialsService } from './redux/service/testimonialsServices';
+import { FilterTestimonialsService, getTestimonialsService } from './redux/service/testimonialsServices';
+import { createSelector } from 'reselect'
 
 function App() {
-  const dispatch  = useDispatch();
+ 
+
+  const dispatch = useDispatch();
+  const TestimonialsState = useSelector(state => state.testimonials);
+
+  useMemo(() => 
+    getLanguagesService(dispatch)
+  , [])
 
   useEffect(() => {
-      getLanguagesService(dispatch)
-      getTestimonialsService(dispatch)
-  }, [dispatch])
+    FilterTestimonialsService(dispatch, TestimonialsState);
+  }, [TestimonialsState.order, TestimonialsState.language, TestimonialsState.exercise, TestimonialsState.current_page])
 
-  
-    const LanguagesState = useSelector(state => state.languages);
-    const TestimonialsState = useSelector(state => state.testimonials);
+ 
+
 
   return (
     <>
-      <Navbar languages={LanguagesState.languages} />
+      <Navbar  />
       <Header />
-      <Table languages={LanguagesState.languages} TestimonialsState={TestimonialsState}/>
+      <Table />
     </>
   );
 }

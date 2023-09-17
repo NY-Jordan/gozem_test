@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, } from 'react'
 import logo from './../../assets/images/logo.png'
 
 import dashboard_image from './../../assets/images/m-trackIconBG [active].png'
@@ -18,16 +18,17 @@ import verticalMenu from './../../assets/images/icon/navigation-menu-vertical.pn
 import NavItem from './NavItem'
 import Dropdown from './Dropdown'
 import DropdownItem from './DropdownItem'
+import { useSelector } from 'react-redux'
 
-export default function Navbar({languages}) {
-
+export default function Navbar() {
+  const languagesSate = useSelector(state => state.languages);
+  const [TotalExercise, setTotalExercise] = useState(0);
   const [MessageState, setMessageState] = useState('group_active') // active with setMessageState('group_active')
   const [BadgeState, setBadgeState] = useState('group_active') // active with setMessageState('group_active')
   const [Badge_oneState, setBadge_oneState] = useState('badge1_active') // active with setMessageState('group_active')
   
   return (
     <nav className="navbar bg-base-100  shadow pl-10 pr-0 py-0 flex items-center ">
-        
         <a href='#'  >
             <img src={logo} />
         </a>
@@ -35,8 +36,12 @@ export default function Navbar({languages}) {
             <ul className="menu menu-horizontal px-1 py-0  w-full ">
                 <NavItem icon={dashboard_image}  title={"Dashboard"}/>
                 <Dropdown  icon={railroad} title={"Language"} >
-                    {languages && languages.map((language, key) => 
-                        <DropdownItem icon={language.icon_url}  title={language.title}/> 
+                    <DropdownItem icon={language1}  title={"All"} slug={''} num_exercises={TotalExercise}/> 
+                    {languagesSate && languagesSate.languages.map((language, key) => 
+                      {
+                        
+                        return  <DropdownItem  key={key} icon={language.icon_url}  title={language.title} slug={language.slug} num_exercises={language.num_exercises}/> 
+                      }
                     )  }
                 </Dropdown>
                 <NavItem icon={conversation}  title={"Mentoring"}/>

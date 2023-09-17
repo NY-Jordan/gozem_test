@@ -4,6 +4,7 @@ export const  TestimonialsActions = {
     GET_TESTIMONIALS_ACTIONS_SUCCESS : "GET_TESTIMONIALS_ACTIONS" ,
     GET_TESTIMONIALS_ACTIONS_FAILED : "GET_TESTIMONIALS_ACTIONS" ,
     FILTER_TESTIMONIALS : "FILTER_TESTIMONIALS_BY_EXERCISE" ,
+    LOADING_TESTIMONIALS : "LOADING_TESTIMONIALS"
    
 }
 
@@ -36,4 +37,14 @@ export const FilterTestimonialsByPage = (page) => ({
 export const FilterTestimonialsByOrder = (order) => ({
     type : TestimonialsActions.FILTER_TESTIMONIALS,
     payload : {param : "order", order : order}
+});
+
+export const FilterTestimonialsByLanguage= (language) => ({
+    type : TestimonialsActions.FILTER_TESTIMONIALS,
+    payload : {param : "language", language : language}
+});
+
+export const LoadingTestimonials= (loading) => ({
+    type : TestimonialsActions.LOADING_TESTIMONIALS,
+    payload : { loading : loading}
 });

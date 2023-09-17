@@ -7,6 +7,7 @@ const initialState = {
     language :'',
     exercise : '',
     order : "newest_first",
+    loading : false,
     totalPage : 0,
     current_page : 1,
     total_count : 0,
@@ -20,13 +21,16 @@ const  TestimonialsReducer = (state = initialState, action) => {
             totalPage : action.payload.totalPage,
             current_page :  action.payload.current_page,
             total_count : action.payload.total_count,
-            testimonials : action.payload.testimonials } 
+            testimonials : action.payload.testimonials
+        } 
     case TestimonialsActions.GET_TESTIMONIALS_ACTIONS_FAILED :
         return {...state, error :  true } 
+    case TestimonialsActions.LOADING_TESTIMONIALS :
+        console.log('====================================');
+        console.log('loading reducers');
+        console.log('====================================');
+        return {...state, loading :  action.payload.loading } 
     case TestimonialsActions.FILTER_TESTIMONIALS :
-        console.log('====================================');
-        console.log(action.payload.param );
-        console.log('====================================');
         if (action.payload.param === "exercise") {
             return {...state, exercise : action.payload.exercise } 
         }
@@ -34,10 +38,10 @@ const  TestimonialsReducer = (state = initialState, action) => {
             return {...state, current_page : action.payload.page } 
         }
         if (action.payload.param === "order") {
-            console.log('====================================');
-            console.log(action.payload.order);
-            console.log('====================================');
             return {...state, order : action.payload.order } 
+        }
+        if (action.payload.param === "language") {
+            return {...state, language : action.payload.language } 
         }
     default:
         return {...state};
