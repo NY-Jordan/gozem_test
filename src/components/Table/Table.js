@@ -7,7 +7,7 @@ import DropdownItem from '../Navigation/DropdownItem'
 import searchIcon from './../../assets/images/icon/Group.png'
 import Image404 from './../../assets/images/404.png'
 import { FilterTestimonialsService } from '../../redux/service/testimonialsServices'
-import { FilterTestimonialsByExercise, FilterTestimonialsByOrder } from '../../redux/actions/TestimonialsAction'
+import { FilterTestimonialsByExercise, FilterTestimonialsByOrder, FilterTestimonialsByPage } from '../../redux/actions/TestimonialsAction'
 import { connect, useDispatch, useSelector } from 'react-redux'
 import Pagination from './Pagination'
 import { useDebounce } from 'use-debounce'
@@ -23,7 +23,7 @@ export  function Table(props) {
     const TestimonialsState = useSelector(state => state.testimonials);
     const dispatch  = useDispatch();
     const [ExerciseValue, setExerciseValue] = useState('');
-    const  [DebounceExerciseValue] =  useDebounce(ExerciseValue, 3000)
+    const  [DebounceExerciseValue] =  useDebounce(ExerciseValue, 500)
 
     const handleChangeOrder  = (value) => {
         dispatch(FilterTestimonialsByOrder(value));
@@ -33,6 +33,9 @@ export  function Table(props) {
         setExerciseValue(value)
     }
 
+    
+
+   
     useEffect(() => {
         dispatch(FilterTestimonialsByExercise(DebounceExerciseValue));
     }, [DebounceExerciseValue])
@@ -114,7 +117,7 @@ export  function Table(props) {
                 
                 </tbody>
                 <tfoot>
-            <Pagination  />
+                   <Pagination  />
                 </tfoot>
             </table>
             

@@ -23,9 +23,9 @@ import { useSelector } from 'react-redux'
 export default function Navbar() {
   const languagesSate = useSelector(state => state.languages);
   const [TotalExercise, setTotalExercise] = useState(0);
-  const [MessageState, setMessageState] = useState('group_active') // active with setMessageState('group_active')
-  const [BadgeState, setBadgeState] = useState('group_active') // active with setMessageState('group_active')
-  const [Badge_oneState, setBadge_oneState] = useState('badge1_active') // active with setMessageState('group_active')
+  const [MessageState, setMessageState] = useState('group_active') // desactive with setMessageState('hidden')
+  const [BadgeState, setBadgeState] = useState('group_active') // desactive with setMessageState('hidden')
+  const [Badge_oneState, setBadge_oneState] = useState('badge1_active') // desactive with setMessageState('hidden')
   
   return (
     <nav className="navbar bg-base-100  shadow pl-10 pr-0 py-0 flex items-center ">

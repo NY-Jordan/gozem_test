@@ -37,9 +37,6 @@ export const FilterTestimonialsService= async (dispatch, TestimonialsState) => {
                 const totalPage = res.pagination.total_pages;
                 const current_page = res.pagination.current_page;
                 const total_count = res.pagination.total_count;
-                console.log('====================================');
-                console.log('/testimonials?page='+TestimonialsState.current_page+'&language='+TestimonialsState.language+'&exercise='+TestimonialsState.exercise+'&order='+TestimonialsState.order,);
-                console.log('====================================');
                 dispatch(getTestimonialsSuccess(testimonials,  totalPage, current_page, total_count));
                 setTimeout(() => {
                     dispatch(LoadingTestimonials(false))
@@ -47,12 +44,12 @@ export const FilterTestimonialsService= async (dispatch, TestimonialsState) => {
                 
             
             } else {
-                console.log('====================================');
-                console.log('error');
-                console.log('====================================');
                 dispatch(getTestimonialsFailed(res.error));
             }    
         }).catch((e) => { 
+            console.log('====================================');
+            console.log(e.message);
+            console.log('====================================');
                 dispatch(getTestimonialsFailed(e.message));
         })   
 };

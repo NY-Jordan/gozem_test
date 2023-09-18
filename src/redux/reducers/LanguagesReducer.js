@@ -1,6 +1,6 @@
 import { LanguagesActions } from "../actions/LanguagesAction";
 
-const initialState = {
+export const initialState = {
     name: "languages",
     languages : [],
     error : false,
@@ -11,7 +11,7 @@ const  LanguagesReducer = (state = initialState, action) => {
     case LanguagesActions.GET_LANGUAGES_ACTIONS_SUCCESS :
         return {...state, languages : action.payload.languages } 
     case LanguagesActions.GET_LANGUAGES_ACTIONS_FAILED :
-        return {...state, error :  true } 
+        return {name: "languages",languages : [], error : action.payload.error } 
     default:
         return {...state};
     }

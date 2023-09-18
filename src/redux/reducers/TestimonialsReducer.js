@@ -1,6 +1,6 @@
 import { TestimonialsActions } from "../actions/TestimonialsAction";
 
-const initialState = {
+export const initialState = {
     name: "tesimonials",
     testimonials : [],
     error : false,
@@ -24,11 +24,8 @@ const  TestimonialsReducer = (state = initialState, action) => {
             testimonials : action.payload.testimonials
         } 
     case TestimonialsActions.GET_TESTIMONIALS_ACTIONS_FAILED :
-        return {...state, error :  true } 
+        return {...state, error :  action.payload.error } 
     case TestimonialsActions.LOADING_TESTIMONIALS :
-        console.log('====================================');
-        console.log('loading reducers');
-        console.log('====================================');
         return {...state, loading :  action.payload.loading } 
     case TestimonialsActions.FILTER_TESTIMONIALS :
         if (action.payload.param === "exercise") {
