@@ -53,7 +53,7 @@ export  function Pagination(props) {
     }
     
     //if current page is between  3 and 8 
-    const twoNextPage = (props.current_page >= 3 && props.current_page <= 8) ? [props.current_page+1, props.current_page+2] : false;
+    const twoNextPage = (props.current_page >= 3 && props.current_page <= 8 && props.total_page > 10) ? [props.current_page+1, props.current_page+2] : false;
     
     //second breakpoint
     const secondBreakpoint = (props.current_page >= 9 && props.current_page < props.total_page-2) ? [ '...',props.current_page-1, props.current_page,  props.current_page+1, props.current_page+2] : false;

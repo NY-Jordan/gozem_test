@@ -6,12 +6,9 @@ import { FilterTestimonialsService } from '../../redux/service/testimonialsServi
 export default function DropdownItem({icon, title, slug, num_exercises}) {
     const dispatch  = useDispatch();
     const TestimonialsState = useSelector(state => state.testimonials);
-    const [language, setLanguage] = useState('');
-    const handleChange = (value) => setLanguage(value);
-
-    useEffect(() => {
-        dispatch(FilterTestimonialsByLanguage(language))
-    }, [language])
+    const handleChange = (value) => dispatch(FilterTestimonialsByLanguage(value));
+    
+    
 
   return (
    

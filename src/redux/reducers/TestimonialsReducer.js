@@ -29,16 +29,16 @@ const  TestimonialsReducer = (state = initialState, action) => {
         return {...state, loading :  action.payload.loading } 
     case TestimonialsActions.FILTER_TESTIMONIALS :
         if (action.payload.param === "exercise") {
-            return {...state, exercise : action.payload.exercise } 
+            return {...state, exercise : action.payload.exercise, current_page : 1 } 
         }
         if (action.payload.param === "page") {
             return {...state, current_page : action.payload.page } 
         }
         if (action.payload.param === "order") {
-            return {...state, order : action.payload.order } 
+            return {...state, order : action.payload.order, current_page : 1 } 
         }
         if (action.payload.param === "language") {
-            return {...state, language : action.payload.language } 
+            return {...state, language : action.payload.language, current_page : 1 } 
         }
     default:
         return {...state};

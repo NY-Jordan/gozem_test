@@ -61,6 +61,7 @@ export  function Table(props) {
                                         <img src={arrowBottom}   />
                                     </label>
                                     <ul tabIndex={0} className="dropdown-content   h-60 none overflow-y-auto overflow-x-auto  menu p-2 w-auto shadow bg-base-100 rounded-box ">
+                                        <DropdownItem icon={language1}  title={"All"} slug={''} num_exercises={"00"}/> 
                                         {languagesSate.languages && languagesSate.languages.map((language, key) => 
                                              <DropdownItem  key={key} icon={language.icon_url}  title={language.title} slug={language.slug} num_exercises={language.num_exercises}/> 
                                         )  }
