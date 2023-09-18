@@ -34,7 +34,11 @@ export  function Table(props) {
     }
 
     
-
+    const redirectTestimonial = (id) => {
+       
+        console.log("doing something");
+        window.open("/"+id, "_blank");
+    }
    
     useEffect(() => {
         dispatch(FilterTestimonialsByExercise(DebounceExerciseValue));
@@ -97,7 +101,9 @@ export  function Table(props) {
                         <td>{ testimonial.content.length > 100 ? testimonial.content.substr(0, 5)+'...' :testimonial.content }</td>
                         <td className='flex justify-between items-center'>
                             <p>{ moment(testimonial.created_at).fromNow() }</p> 
-                            <img src={arrowRight}   />
+                            <a href='#' onClick={() =>  { window.open("/single?id="+testimonial.id, "_blank");}}>
+                                <img src={arrowRight}   />
+                            </a>
                         </td>
                     </tr>
                 ) } 
